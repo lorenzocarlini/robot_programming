@@ -18,9 +18,12 @@ TreeNodeInt::~TreeNodeInt(){
 TreeNodeInt* TreeNodeInt::find(int value_) {
   if (value==value_)
     return this;
-  if (value_<value) {
-    // TODO: fill here
+  if (value_ < value) {
     // if there is a left child, continue the search in the left, otherwise return null
+    if (! left) 
+      return 0;
+    return left->find(value_);
+       
   }
   if (value_>value) {
     // if there is a right child, continue the search in the right, otherwise return null
@@ -41,9 +44,14 @@ bool TreeNodeInt::add(int value_) {
     }
     return left->add(value_);
   }
-  if (value_>value) {
-    // TODO: fill here
+  if (value_ > value) {
+    if (!right) {
+      right = new TreeNodeInt(value_);
+      return true;
   }
+  return false;
+  }
+  // Just to shut the IDE up
   return false;
 }
 

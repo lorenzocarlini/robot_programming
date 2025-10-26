@@ -39,12 +39,12 @@ struct VecF {
 
     // Copy assignment operator
     VecF& operator =(const VecF& other) {
-        if (size) delete[] v; size=0; v=0; // If memory is allocated to current VecF for array of floats, free memory
-        if (! other.size) return *this;    // If the other VecF is empty, return immediately
-        size=other.size; v=new float[size];
-        for (int i=0; i<size; ++i)
-        v[i]=other.v[i];
-        return *this;
+      if (size) delete[] v; size=0; v=0; // If memory is allocated to current VecF for array of floats, free memory
+      if (! other.size) return *this;    // If the other VecF is empty, return immediately
+      size=other.size; v=new float[size];
+      for (int i=0; i<size; ++i)
+	v[i]=other.v[i];
+      return *this;
     }
 
     // Addition operator
@@ -55,7 +55,7 @@ struct VecF {
             return returned;
         }
         for(int i=0; i<size; ++i)
-        returned.v[i]+=other.v[i];
+	  returned.v[i]+=other.v[i];
         return returned;
     }
 
